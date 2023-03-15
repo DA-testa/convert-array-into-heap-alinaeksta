@@ -10,16 +10,18 @@ def build_heap(data):
     return swaps
 
 
-def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
-
-
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
+def main(): 
+    text = input()
+    if "F" in text:
+        filename = input()
+        if "a" not in filename:
+            path = "./tests/" + filename
+            with open(path, "r") as file:
+                n = int(file.readline())
+                data = list(map(int, file.readline().split()))
+    elif "I" in text:
+        n = int(input())
+        data = list(map(int, input().split()))
 
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
